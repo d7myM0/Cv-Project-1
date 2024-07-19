@@ -1,51 +1,50 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>السيرة الذاتية</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="D:\Banorama\Panorama-Project-1\CSS\cv.css">
+    <title>Form</title>
 </head>
-<body >
-    <header>
-        <div class="container">
-            <h1>اسمي هنا</h1>
-            <p>مسمى وظيفي هنا</p>
+<body>
+    <div class="container">
+        <div class="card" style="width: 18rem;">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="checkbox" role="switch" onclick="toggleDarkMode()">
+                <label class="form-check-label" for="checkbox">Dark Mode</label>
+            </div>
         </div>
-    </header>
-    <section class="about">
-        <div class="container">
-            <h2>من أنا</h2>
-            <p>نبذة قصيرة عن نفسك هنا.</p>
-            <img src="profile.jpg" alt="صورة شخصية">
-        </div>
-    </section>
-    <section class="skills">
-        <div class="container">
-            <h2>المهارات</h2>
-            <ul>
-                <li>مهارة 1</li>
-                <li>مهارة 2</li>
-                <li>مهارة 3</li>
-            </ul>
-        </div>
-    </section>
-    <section class="contact">
-        <div class="container">
-            <h2>اتصل بي</h2>
-            <form>
-                <label for="name">الاسم:</label><br>
-                <input type="text" id="name" name="name" required><br>
-                
-                <label for="email">البريد الإلكتروني:</label><br>
-                <input type="email" id="email" name="email" required><br>
-                
-                <label for="message">الرسالة:</label><br>
-                <textarea id="message" name="message" required></textarea><br>
-                
-                <button type="submit">إرسال</button>
-            </form>
-        </div><br>
-    </section>
+    </div>
+    <div class="card-body"></div>
+
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('darkmode');
+            document.getElementById('checkbox').checked = true;
+        }
+
+        function toggleDarkMode() {
+            let isDark = document.body.classList.toggle('darkmode');
+
+            if (isDark) {
+                localStorage.setItem('theme', 'dark');
+                document.getElementById('checkbox').checked = true;
+            } else {
+                localStorage.removeItem('theme');
+                document.getElementById('checkbox').checked = false;
+            }
+        }
+    </script>
+
+    <h2>Login Form</h2>
+    <p>Enter your email and password</p>
+
+    <form method="post" action="D:\Banorama\Panorama-Project-1\HTML\index.html">
+        <label for="email">Email</label><br>
+        <input type="email" id="email" name="email"><br>
+        <label for="pas">Password</label><br>
+        <input type="password" id="pas" name="pas"><br>
+        <input type="submit" id="submit" value="Log in">
+    </form>
 </body>
 </html>
